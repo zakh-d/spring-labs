@@ -1,19 +1,25 @@
 package pl.edu.pg.eti.labproject.workouts.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Optional;
 import java.util.UUID;
 
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Getter
 @Setter
 @EqualsAndHashCode
+@Entity
+@Table(name = "exercises")
 public class Exercise implements Comparable<Exercise>{
     /**
      * Id of Exercise
      */
+    @Id
     private UUID id;
 
     /**
@@ -34,12 +40,15 @@ public class Exercise implements Comparable<Exercise>{
     /**
      * If exercise requires additional weight like (dumbbells or barbells) it weight in kg can be stored here
      */
+    @Column(name = "additional_weight")
     private Integer additionalWeight;
 
     /**
      * Workout with which exercise is associated
      */
     @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "workout")
     private Workout workout;
 
     @Override
