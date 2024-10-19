@@ -2,6 +2,7 @@ package pl.edu.pg.eti.labproject.workouts.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
 
 import java.util.ArrayList;
 import java.util.List;

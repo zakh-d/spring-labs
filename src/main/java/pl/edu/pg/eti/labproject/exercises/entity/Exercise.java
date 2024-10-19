@@ -1,9 +1,9 @@
-package pl.edu.pg.eti.labproject.workouts.entity;
+package pl.edu.pg.eti.labproject.exercises.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import pl.edu.pg.eti.labproject.workouts.entity.Workout;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Builder
