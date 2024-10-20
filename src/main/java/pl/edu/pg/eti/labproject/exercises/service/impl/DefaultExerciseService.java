@@ -1,5 +1,7 @@
 package pl.edu.pg.eti.labproject.exercises.service.impl;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
 import pl.edu.pg.eti.labproject.exercises.repository.api.ExerciseRepository;
@@ -10,13 +12,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Service
 public class DefaultExerciseService implements ExerciseService {
 
     ExerciseRepository exerciseRepository;
-    public DefaultExerciseService(ExerciseRepository exerciseRepository) {
-        this.exerciseRepository = exerciseRepository;
-    }
     @Override
     public Optional<Exercise> find(UUID id) {
         return exerciseRepository.findExerciseById(id);
