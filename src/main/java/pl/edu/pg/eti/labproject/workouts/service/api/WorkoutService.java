@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface WorkoutService {
     Optional<Workout> find(UUID id);
-    List<Workout> find(String name);
+    List<Workout> findAllByName(String name);
 }

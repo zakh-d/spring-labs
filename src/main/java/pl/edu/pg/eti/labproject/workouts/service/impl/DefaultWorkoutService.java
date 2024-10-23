@@ -22,7 +22,7 @@ public class DefaultWorkoutService implements WorkoutService {
     }
 
     @Override
-    public List<Workout> find(String name) {
+    public List<Workout> findAllByName(String name) {
         return workoutRepository.findByNameContaining(name);
     }
 }
