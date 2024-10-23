@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface ExerciseService {
     Optional<Exercise> find(UUID id);
     List<Exercise> findByWorkout(Workout workout);
+    void create(Exercise exercise);
 }

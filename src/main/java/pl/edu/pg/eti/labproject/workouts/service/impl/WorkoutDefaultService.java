@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Service
-public class DefaultWorkoutService implements WorkoutService {
+public class WorkoutDefaultService implements WorkoutService {
     private final WorkoutRepository workoutRepository;
 
     @Override
@@ -24,5 +24,10 @@ public class DefaultWorkoutService implements WorkoutService {
     @Override
     public List<Workout> findAllByName(String name) {
         return workoutRepository.findByNameContaining(name);
+    }
+
+    @Override
+    public void create(Workout workout) {
+       this.workoutRepository.save(workout);
     }
 }
