@@ -27,7 +27,17 @@ public class WorkoutDefaultService implements WorkoutService {
     }
 
     @Override
+    public List<Workout> findAll() {
+        return workoutRepository.findAll();
+    }
+
+    @Override
     public void create(Workout workout) {
-       this.workoutRepository.save(workout);
+        workoutRepository.save(workout);
+    }
+
+    @Override
+    public void delete(Workout workout) {
+        workoutRepository.delete(workout);
     }
 }

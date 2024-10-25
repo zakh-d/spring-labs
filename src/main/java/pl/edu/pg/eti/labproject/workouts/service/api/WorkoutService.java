@@ -9,5 +9,7 @@ import java.util.UUID;
 public interface WorkoutService {
     Optional<Workout> find(UUID id);
     List<Workout> findAllByName(String name);
+    List<Workout> findAll();
     void create(Workout workout);
+    void delete(Workout workout);
 }
