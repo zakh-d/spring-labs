@@ -1,6 +1,7 @@
 package pl.edu.pg.eti.labproject.initialize;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
 import pl.edu.pg.eti.labproject.exercises.service.api.ExerciseService;
 import pl.edu.pg.eti.labproject.workouts.entity.Workout;
@@ -8,6 +9,7 @@ import pl.edu.pg.eti.labproject.workouts.service.api.WorkoutService;
 
 import java.util.UUID;
 
+@Component
 public class InitializeData implements InitializingBean {
     private WorkoutService workoutService;
     private ExerciseService exerciseService;
@@ -19,6 +21,7 @@ public class InitializeData implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        System.out.println("Initialization Started");
         Workout pushDay = Workout.builder()
                 .id(UUID.randomUUID())
                 .name("Push Day")
@@ -134,5 +137,7 @@ public class InitializeData implements InitializingBean {
         exerciseService.create(squads);
         exerciseService.create(legPress);
         exerciseService.create(legExtension);
+
+        System.out.println("Initialization completed");
     }
 }
