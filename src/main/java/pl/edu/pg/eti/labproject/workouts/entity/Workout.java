@@ -47,7 +47,7 @@ public class Workout implements Comparable<Workout> {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @Builder.Default
-    @OneToMany(mappedBy = "workout")
+    @OneToMany(mappedBy = "workout", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Exercise> exercises = new ArrayList<>();
 
     public void addExercise(Exercise exercise) {
