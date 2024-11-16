@@ -1,9 +1,7 @@
 package pl.edu.pg.eti.labproject.exercises.controller.api;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import pl.edu.pg.eti.labproject.exercises.dto.GetExerciseListResponse;
 
 import java.util.UUID;
@@ -15,6 +13,7 @@ public interface ExerciseController {
     );
 
     @DeleteMapping("/api/workouts/{workoutId}/exercises/{exerciseId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteExerciseFromWorkout(
             @PathVariable("workoutId")
             UUID workoutId,

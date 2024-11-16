@@ -28,3 +28,6 @@ Content-Type: application/json
 
 ### Get Workout's exercises
 GET http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66/exercises
+
+### Delete exercise from workout
+DELETE http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66/exercises/00129945-fdb5-4027-b86b-ad1be26f6376

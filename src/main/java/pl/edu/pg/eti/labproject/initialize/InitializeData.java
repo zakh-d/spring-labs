@@ -47,24 +47,24 @@ public class InitializeData implements InitializingBean {
        workoutService.save(pullDay);
        workoutService.save(legDay);
 
-        Exercise benchPress = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise benchPress = Exercise.builder()
+                .id(UUID.fromString("38037918-36dc-4a39-ac1b-6dcec29d62be"))
                 .name("Bench Press")
                 .sets(5)
                 .reps(8)
                 .additionalWeight(70)
                 .workout(pushDay)
                 .build();
-        Exercise chestFlies = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise chestFlies = Exercise.builder()
+                .id(UUID.fromString("4dfbd783-ca2a-402c-b1fe-dff0c25f7fbd"))
                 .name("Chest Flies")
                 .sets(3)
                 .reps(12)
                 .additionalWeight(30)
                 .workout(pushDay)
                 .build();
-        Exercise dips = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise dips = Exercise.builder()
+                .id(UUID.fromString("68ecc0f8-4fae-41d4-bced-f07db9fae8bd"))
                 .name("Dips")
                 .sets(4)
                 .reps(8)
@@ -76,8 +76,8 @@ public class InitializeData implements InitializingBean {
         exerciseService.create(chestFlies);
         exerciseService.create(dips);
 
-        Exercise pullUps = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise pullUps = Exercise.builder()
+                .id(UUID.fromString("e78ba76b-f337-45f0-82da-36699997fa95"))
                 .name("Dips")
                 .sets(5)
                 .reps(10)
@@ -85,8 +85,8 @@ public class InitializeData implements InitializingBean {
                 .workout(pullDay)
                 .build();
 
-        Exercise barbellRow = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise barbellRow = Exercise.builder()
+                .id(UUID.fromString("6f057cd2-bd08-4db2-a0a2-34a7478da473"))
                 .name("Dips")
                 .sets(4)
                 .reps(8)
@@ -94,8 +94,8 @@ public class InitializeData implements InitializingBean {
                 .workout(pullDay)
                 .build();
 
-        Exercise deadlift = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise deadlift = Exercise.builder()
+                .id(UUID.fromString("0ef1ec25-b586-46e1-a9ab-52c6f6aab90b"))
                 .name("Deadlift")
                 .sets(5)
                 .reps(6)
@@ -107,8 +107,8 @@ public class InitializeData implements InitializingBean {
         exerciseService.create(barbellRow);
         exerciseService.create(deadlift);
 
-        Exercise squads = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise squads = Exercise.builder()
+                .id(UUID.fromString("00129945-fdb5-4027-b86b-ad1be26f6376"))
                 .name("Deadlift")
                 .sets(5)
                 .reps(6)
@@ -116,8 +116,8 @@ public class InitializeData implements InitializingBean {
                 .workout(legDay)
                 .build();
 
-        Exercise legPress = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise legPress = Exercise.builder()
+                .id(UUID.fromString("dd3a5358-4fcc-45c2-9b57-e14afdfef5e2"))
                 .name("Leg Press")
                 .sets(4)
                 .reps(8)
@@ -125,8 +125,8 @@ public class InitializeData implements InitializingBean {
                 .workout(legDay)
                 .build();
 
-        Exercise legExtension = Exercise.builder()
-                .id(UUID.randomUUID())
+       Exercise legExtension = Exercise.builder()
+                .id(UUID.fromString("144babd6-4869-42a8-93a0-f90e21b7bea9"))
                 .name("Leg Extension")
                 .sets(3)
                 .reps(12)
