@@ -31,3 +31,15 @@ GET http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66/exer
 
 ### Delete exercise from workout
 DELETE http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66/exercises/00129945-fdb5-4027-b86b-ad1be26f6376
+
+
+### Put exercise to workout
+PUT http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66/exercises/051f2d79-e7e0-4364-a5a0-41551884ce48
+Content-Type: application/json
+
+{
+  "name": "Back Squats",
+  "reps": 10,
+  "sets": 4,
+  "additional_weight": 40
+}

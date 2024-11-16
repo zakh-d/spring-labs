@@ -72,9 +72,9 @@ public class InitializeData implements InitializingBean {
                 .workout(pushDay)
                 .build();
 
-        exerciseService.create(benchPress);
-        exerciseService.create(chestFlies);
-        exerciseService.create(dips);
+        exerciseService.save(benchPress);
+        exerciseService.save(chestFlies);
+        exerciseService.save(dips);
 
        Exercise pullUps = Exercise.builder()
                 .id(UUID.fromString("e78ba76b-f337-45f0-82da-36699997fa95"))
@@ -103,9 +103,9 @@ public class InitializeData implements InitializingBean {
                 .workout(pullDay)
                 .build();
 
-        exerciseService.create(pullUps);
-        exerciseService.create(barbellRow);
-        exerciseService.create(deadlift);
+        exerciseService.save(pullUps);
+        exerciseService.save(barbellRow);
+        exerciseService.save(deadlift);
 
        Exercise squads = Exercise.builder()
                 .id(UUID.fromString("00129945-fdb5-4027-b86b-ad1be26f6376"))
@@ -134,9 +134,9 @@ public class InitializeData implements InitializingBean {
                 .workout(legDay)
                 .build();
 
-        exerciseService.create(squads);
-        exerciseService.create(legPress);
-        exerciseService.create(legExtension);
+        exerciseService.save(squads);
+        exerciseService.save(legPress);
+        exerciseService.save(legExtension);
 
         System.out.println("Initialization completed");
     }
