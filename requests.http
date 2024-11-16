@@ -24,3 +24,7 @@ Content-Type: application/json
 {
   "name": "Biceps day"
 }
+
+
+### Get Workout's exercises
+GET http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66/exercises
