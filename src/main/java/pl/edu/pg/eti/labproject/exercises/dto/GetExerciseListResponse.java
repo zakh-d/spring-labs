@@ -1,7 +1,7 @@
-package pl.edu.pg.eti.labproject.workouts.dto;
+package pl.edu.pg.eti.labproject.exercises.dto;
+import lombok.*;
 
 import java.util.List;
-import lombok.*;
 
 @Getter
 @Setter
@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-public class GetWorkoutsResponse {
-    private List<GetWorkoutResponse> workouts;
+public class GetExerciseListResponse {
+    private List<GetExerciseResponse> exercises;
     private Integer count;
 }
