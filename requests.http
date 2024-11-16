@@ -1,0 +1,5 @@
+### Get all workouts
+GET http://localhost:8080/api/workouts
+
+### Get particular workout
+GET http://localhost:8080/api/workouts/fa88dcb3-59af-4066-9bce-a6dde069bf9a
