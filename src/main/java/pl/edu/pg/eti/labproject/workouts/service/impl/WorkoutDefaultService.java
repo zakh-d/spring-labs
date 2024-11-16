@@ -32,7 +32,7 @@ public class WorkoutDefaultService implements WorkoutService {
     }
 
     @Override
-    public void create(Workout workout) {
+    public void save(Workout workout) {
         workoutRepository.save(workout);
     }
 

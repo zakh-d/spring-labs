@@ -1,12 +1,10 @@
 package pl.edu.pg.eti.labproject.workouts.controller.api;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import pl.edu.pg.eti.labproject.workouts.dto.GetWorkoutListResponse;
 import pl.edu.pg.eti.labproject.workouts.dto.GetWorkoutResponse;
+import pl.edu.pg.eti.labproject.workouts.dto.PutPatchWorkoutRequest;
 
 import java.util.UUID;
 
@@ -27,5 +25,21 @@ public interface WorkoutController {
     void deleteWorkout(
             @PathVariable("id")
             UUID id
+    );
+
+    @PutMapping("/api/workouts/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    void putWorkout(
+            @PathVariable("id")
+            UUID id,
+            @RequestBody
+            PutPatchWorkoutRequest request
+    );
+
+    @PatchMapping("/api/workouts/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void patchWorkout(
+            @PathVariable("id") UUID id,
+            @RequestBody PutPatchWorkoutRequest request
     );
 }

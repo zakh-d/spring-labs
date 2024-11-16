@@ -43,9 +43,9 @@ public class InitializeData implements InitializingBean {
                 .estimatedCalories(1200)
                 .build();
 
-       workoutService.create(pushDay);
-       workoutService.create(pullDay);
-       workoutService.create(legDay);
+       workoutService.save(pushDay);
+       workoutService.save(pullDay);
+       workoutService.save(legDay);
 
         Exercise benchPress = Exercise.builder()
                 .id(UUID.randomUUID())

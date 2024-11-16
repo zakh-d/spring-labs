@@ -6,3 +6,21 @@ GET http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66
 
 ### Delete workout
 DELETE http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66
+
+### Put workout
+PUT http://localhost:8080/api/workouts/4c99a53b-5590-4e9c-9b22-e886e89e48cd
+Content-Type: application/json
+
+{
+  "name": "Arm day",
+  "duration": 100,
+  "estimated_calories": 700
+}
+
+### Patch workout
+PATCH http://localhost:8080/api/workouts/4c99a53b-5590-4e9c-9b22-e886e89e48cd
+Content-Type: application/json
+
+{
+  "name": "Biceps day"
+}
