@@ -23,21 +23,21 @@ public class InitializeData implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         System.out.println("Initialization Started");
         Workout pushDay = Workout.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.fromString("cf0de289-27a2-4349-a681-370f1348c55f"))
                 .name("Push Day")
                 .duration(120)
                 .estimatedCalories(900)
                 .build();
 
         Workout pullDay = Workout.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.fromString("bdf86514-c1d1-47a3-b69c-9684684ac2ec"))
                 .name("Pull Day")
                 .duration(90)
                 .estimatedCalories(700)
                 .build();
 
         Workout legDay = Workout.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.fromString("de1eaf7b-1b68-4c0a-a15e-682da5aa4c66"))
                 .name("Leg Day")
                 .duration(100)
                 .estimatedCalories(1200)

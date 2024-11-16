@@ -35,4 +35,9 @@ public class WorkoutDefaultController implements WorkoutController {
                 .map(workoutToResponse)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
+
+    @Override
+    public void deleteWorkout(UUID id) {
+        workoutService.find(id).ifPresent(workout -> workoutService.delete(workout));
+    }
 }
