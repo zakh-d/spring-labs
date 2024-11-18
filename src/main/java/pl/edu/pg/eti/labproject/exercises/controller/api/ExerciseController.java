@@ -23,12 +23,23 @@ public interface ExerciseController {
     );
 
     @PutMapping("/api/workouts/{workoutId}/exercises/{exerciseId}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     void putExerciseToWorkout(
             @PathVariable("workoutId")
             UUID workoutId,
             @PathVariable("exerciseId")
             UUID exerciseId,
+            @RequestBody
+            PutPatchExerciseRequest request
+    );
+
+    @PatchMapping("/api/workouts/{workoutId}/exercises/{exerciseId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void patchExercise(
+            @PathVariable("workoutId")
+            UUID workoutId,
+            @PathVariable("exerciseId")
+            UUID exercisesId,
             @RequestBody
             PutPatchExerciseRequest request
     );

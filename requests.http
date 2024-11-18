@@ -43,3 +43,11 @@ Content-Type: application/json
   "sets": 4,
   "additional_weight": 40
 }
+
+### Patch exercise to workout
+PATCH http://localhost:8080/api/workouts/de1eaf7b-1b68-4c0a-a15e-682da5aa4c66/exercises/051f2d79-e7e0-4364-a5a0-41551884ce48
+Content-Type: application/json
+
+{
+  "additional_weight": 90
+}
