@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pl.edu.pg.eti</groupId>
-    <artifactId>lab-project</artifactId>
+    <artifactId>simple-workout</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lab-project</name>
-    <description>lab-project</description>
+    <name>Simple Workout</name>
+    <description>Simple Workout App</description>
     <url/>
     <licenses>
         <license/>
