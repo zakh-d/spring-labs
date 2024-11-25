@@ -10,6 +10,6 @@ public interface WorkoutService {
     Optional<Workout> find(UUID id);
     List<Workout> findAllByName(String name);
     List<Workout> findAll();
-    void create(Workout workout);
+    void save(Workout workout);
     void delete(Workout workout);
 }
