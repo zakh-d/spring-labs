@@ -1,9 +1,9 @@
-package pl.edu.pg.eti.labproject.exercises.repository.api;
+package pl.edu.pg.eti.exercisemicroservice.exercises.repository.api;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
-import pl.edu.pg.eti.labproject.workouts.entity.Workout;
+import pl.edu.pg.eti.exercisemicroservice.exercises.entity.Exercise;
+import pl.edu.pg.eti.exercisemicroservice.workouts.entity.Workout;
 
 import java.util.List;
 import java.util.Optional;

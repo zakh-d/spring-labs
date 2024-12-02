@@ -2,20 +2,17 @@ package pl.edu.pg.eti.exercisemicroservice.initialize;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
-import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
-import pl.edu.pg.eti.labproject.exercises.service.api.ExerciseService;
-import pl.edu.pg.eti.labproject.workouts.entity.Workout;
-import pl.edu.pg.eti.labproject.workouts.service.api.WorkoutService;
+import pl.edu.pg.eti.exercisemicroservice.exercises.entity.Exercise;
+import pl.edu.pg.eti.exercisemicroservice.exercises.service.api.ExerciseService;
+import pl.edu.pg.eti.exercisemicroservice.workouts.entity.Workout;
 
 import java.util.UUID;
 
 @Component
 public class InitializeData implements InitializingBean {
-    private WorkoutService workoutService;
     private ExerciseService exerciseService;
 
-    public InitializeData(WorkoutService workoutService, ExerciseService exerciseService) {
-        this.workoutService = workoutService;
+    public InitializeData(ExerciseService exerciseService) {
         this.exerciseService = exerciseService;
     }
 
@@ -42,10 +39,6 @@ public class InitializeData implements InitializingBean {
                 .duration(100)
                 .estimatedCalories(1200)
                 .build();
-
-       workoutService.save(pushDay);
-       workoutService.save(pullDay);
-       workoutService.save(legDay);
 
        Exercise benchPress = Exercise.builder()
                 .id(UUID.fromString("38037918-36dc-4a39-ac1b-6dcec29d62be"))

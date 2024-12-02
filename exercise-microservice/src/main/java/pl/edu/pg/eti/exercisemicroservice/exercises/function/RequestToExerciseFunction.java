@@ -1,10 +1,10 @@
-package pl.edu.pg.eti.labproject.exercises.function;
+package pl.edu.pg.eti.exercisemicroservice.exercises.function;
 
 import org.springframework.stereotype.Component;
-import pl.edu.pg.eti.labproject.exercises.dto.PutPatchExerciseRequest;
-import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
-import pl.edu.pg.eti.labproject.function.TriFunction;
-import pl.edu.pg.eti.labproject.workouts.entity.Workout;
+import pl.edu.pg.eti.exercisemicroservice.exercises.dto.PutPatchExerciseRequest;
+import pl.edu.pg.eti.exercisemicroservice.exercises.entity.Exercise;
+import pl.edu.pg.eti.exercisemicroservice.function.TriFunction;
+import pl.edu.pg.eti.exercisemicroservice.workouts.entity.Workout;
 
 import java.util.UUID;
 

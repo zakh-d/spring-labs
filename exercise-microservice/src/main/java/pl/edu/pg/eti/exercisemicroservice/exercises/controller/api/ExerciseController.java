@@ -1,4 +1,4 @@
-package pl.edu.pg.eti.labproject.exercises.controller.api;
+package pl.edu.pg.eti.exercisemicroservice.exercises.controller.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

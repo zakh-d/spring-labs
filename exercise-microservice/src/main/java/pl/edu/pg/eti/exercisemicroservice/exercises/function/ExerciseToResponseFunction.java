@@ -1,8 +1,8 @@
-package pl.edu.pg.eti.labproject.exercises.function;
+package pl.edu.pg.eti.exercisemicroservice.exercises.function;
 
 import org.springframework.stereotype.Component;
-import pl.edu.pg.eti.labproject.exercises.dto.GetExerciseResponse;
-import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
+import pl.edu.pg.eti.exercisemicroservice.exercises.dto.GetExerciseResponse;
+import pl.edu.pg.eti.exercisemicroservice.exercises.entity.Exercise;
 
 import java.util.function.Function;
 

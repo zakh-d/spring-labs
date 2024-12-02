@@ -1,20 +1,20 @@
-package pl.edu.pg.eti.labproject.exercises.controller.impl;
+package pl.edu.pg.eti.exercisemicroservice.exercises.controller.impl;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import pl.edu.pg.eti.labproject.exercises.controller.api.ExerciseController;
-import pl.edu.pg.eti.labproject.exercises.dto.GetExerciseListResponse;
-import pl.edu.pg.eti.labproject.exercises.dto.PutPatchExerciseRequest;
-import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
-import pl.edu.pg.eti.labproject.exercises.function.ExercisesToResponseFunction;
-import pl.edu.pg.eti.labproject.exercises.function.RequestToExerciseFunction;
-import pl.edu.pg.eti.labproject.exercises.function.UpdateExerciseWithRequestFunction;
-import pl.edu.pg.eti.labproject.exercises.service.api.ExerciseService;
-import pl.edu.pg.eti.labproject.workouts.entity.Workout;
-import pl.edu.pg.eti.labproject.workouts.service.api.WorkoutService;
+import pl.edu.pg.eti.exercisemicroservice.exercises.controller.api.ExerciseController;
+import pl.edu.pg.eti.exercisemicroservice.exercises.dto.GetExerciseListResponse;
+import pl.edu.pg.eti.exercisemicroservice.exercises.dto.PutPatchExerciseRequest;
+import pl.edu.pg.eti.exercisemicroservice.exercises.entity.Exercise;
+import pl.edu.pg.eti.exercisemicroservice.exercises.function.ExercisesToResponseFunction;
+import pl.edu.pg.eti.exercisemicroservice.exercises.function.RequestToExerciseFunction;
+import pl.edu.pg.eti.exercisemicroservice.exercises.function.UpdateExerciseWithRequestFunction;
+import pl.edu.pg.eti.exercisemicroservice.exercises.service.api.ExerciseService;
+import pl.edu.pg.eti.exercisemicroservice.workouts.entity.Workout;
+import pl.edu.pg.eti.exercisemicroservice.workouts.service.api.WorkoutService;
 
 import java.util.UUID;
 
