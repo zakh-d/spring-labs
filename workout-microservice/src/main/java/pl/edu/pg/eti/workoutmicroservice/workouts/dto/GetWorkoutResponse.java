@@ -1,4 +1,4 @@
-package pl.edu.pg.eti.labproject.workouts.dto;
+package pl.edu.pg.eti.workoutmicroservice.workouts.dto;
 
 import lombok.*;
 

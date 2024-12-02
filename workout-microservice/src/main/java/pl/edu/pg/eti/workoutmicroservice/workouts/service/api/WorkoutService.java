@@ -1,6 +1,6 @@
-package pl.edu.pg.eti.labproject.workouts.service.api;
+package pl.edu.pg.eti.workoutmicroservice.workouts.service.api;
 
-import pl.edu.pg.eti.labproject.workouts.entity.Workout;
+import pl.edu.pg.eti.workoutmicroservice.workouts.entity.Workout;
 
 import java.util.List;
 import java.util.Optional;

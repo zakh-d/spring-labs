@@ -1,8 +1,8 @@
-package pl.edu.pg.eti.labproject.workouts.entity;
+package pl.edu.pg.eti.workoutmicroservice.workouts.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import pl.edu.pg.eti.labproject.exercises.entity.Exercise;
+import pl.edu.pg.eti.workoutmicroservice.exercises.entity.Exercise;
 
 import java.util.ArrayList;
 import java.util.List;

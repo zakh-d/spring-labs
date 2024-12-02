@@ -1,10 +1,10 @@
-package pl.edu.pg.eti.labproject.workouts.controller.api;
+package pl.edu.pg.eti.workoutmicroservice.workouts.controller.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pg.eti.labproject.workouts.dto.GetWorkoutListResponse;
-import pl.edu.pg.eti.labproject.workouts.dto.GetWorkoutResponse;
-import pl.edu.pg.eti.labproject.workouts.dto.PutPatchWorkoutRequest;
+import pl.edu.pg.eti.workoutmicroservice.workouts.dto.GetWorkoutListResponse;
+import pl.edu.pg.eti.workoutmicroservice.workouts.dto.GetWorkoutResponse;
+import pl.edu.pg.eti.workoutmicroservice.workouts.dto.PutPatchWorkoutRequest;
 
 import java.util.UUID;
 

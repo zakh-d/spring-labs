@@ -1,8 +1,8 @@
-package pl.edu.pg.eti.labproject.workouts.function;
+package pl.edu.pg.eti.workoutmicroservice.workouts.function;
 
 import org.springframework.stereotype.Component;
-import pl.edu.pg.eti.labproject.workouts.dto.GetWorkoutListResponse;
-import pl.edu.pg.eti.labproject.workouts.entity.Workout;
+import pl.edu.pg.eti.workoutmicroservice.workouts.dto.GetWorkoutListResponse;
+import pl.edu.pg.eti.workoutmicroservice.workouts.entity.Workout;
 
 import java.util.List;
 import java.util.function.Function;

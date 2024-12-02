@@ -1,11 +1,11 @@
-package pl.edu.pg.eti.labproject.workouts.service.impl;
+package pl.edu.pg.eti.workoutmicroservice.workouts.service.impl;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.edu.pg.eti.labproject.workouts.entity.Workout;
-import pl.edu.pg.eti.labproject.workouts.repository.api.WorkoutRepository;
-import pl.edu.pg.eti.labproject.workouts.service.api.WorkoutService;
+import pl.edu.pg.eti.workoutmicroservice.workouts.entity.Workout;
+import pl.edu.pg.eti.workoutmicroservice.workouts.repository.api.WorkoutRepository;
+import pl.edu.pg.eti.workoutmicroservice.workouts.service.api.WorkoutService;
 
 import java.util.List;
 import java.util.Optional;
