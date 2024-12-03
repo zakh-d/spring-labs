@@ -17,7 +17,6 @@ public class InitializeData implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("Initialization Started");
         Workout pushDay = Workout.builder()
                 .id(UUID.fromString("cf0de289-27a2-4349-a681-370f1348c55f"))
                 .name("Push Day")

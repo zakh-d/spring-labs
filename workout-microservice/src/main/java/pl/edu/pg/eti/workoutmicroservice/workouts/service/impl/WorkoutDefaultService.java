@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pg.eti.workoutmicroservice.workouts.entity.Workout;
+import pl.edu.pg.eti.workoutmicroservice.workouts.event.repository.api.WorkoutEventRepository;
 import pl.edu.pg.eti.workoutmicroservice.workouts.repository.api.WorkoutRepository;
 import pl.edu.pg.eti.workoutmicroservice.workouts.service.api.WorkoutService;
 
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Service
 public class WorkoutDefaultService implements WorkoutService {
     private final WorkoutRepository workoutRepository;
+    private final WorkoutEventRepository workoutEventRepository;
 
     @Override
     public Optional<Workout> find(UUID id) {
@@ -34,10 +36,12 @@ public class WorkoutDefaultService implements WorkoutService {
     @Override
     public void save(Workout workout) {
         workoutRepository.save(workout);
+        workoutEventRepository.create(workout.getId());
     }
 
     @Override
     public void delete(Workout workout) {
         workoutRepository.delete(workout);
+        workoutEventRepository.delete(workout.getId());
     }
 }
