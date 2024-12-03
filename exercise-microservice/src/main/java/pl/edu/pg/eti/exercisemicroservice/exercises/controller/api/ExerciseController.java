@@ -2,8 +2,8 @@ package pl.edu.pg.eti.exercisemicroservice.exercises.controller.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pg.eti.labproject.exercises.dto.GetExerciseListResponse;
-import pl.edu.pg.eti.labproject.exercises.dto.PutPatchExerciseRequest;
+import pl.edu.pg.eti.exercisemicroservice.exercises.dto.GetExerciseListResponse;
+import pl.edu.pg.eti.exercisemicroservice.exercises.dto.PutPatchExerciseRequest;
 
 import java.util.UUID;
 
