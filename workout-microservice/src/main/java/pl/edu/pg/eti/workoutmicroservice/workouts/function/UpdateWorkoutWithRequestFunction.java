@@ -16,7 +16,6 @@ public class UpdateWorkoutWithRequestFunction implements BiFunction<Workout, Put
                 .name(Optional.ofNullable(request.getName()).orElse(workout.getName()))
                 .duration(Optional.ofNullable(request.getDuration()).orElse(workout.getDuration()))
                 .estimatedCalories(Optional.ofNullable(request.getEstimatedCalories()).orElse(workout.getEstimatedCalories()))
-                .exercises(workout.getExercises())
                 .build();
     }
 }
