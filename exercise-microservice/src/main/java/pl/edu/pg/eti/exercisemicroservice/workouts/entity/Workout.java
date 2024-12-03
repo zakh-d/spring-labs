@@ -17,7 +17,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Entity
 @Table(name = "workouts")
-public class Workout implements Comparable<Workout> {
+public class Workout {
 
     /**
      * ID of workout
@@ -25,25 +25,6 @@ public class Workout implements Comparable<Workout> {
     @Id
     private UUID id;
 
-    /**
-     * Workout name
-     */
-    private String name;
-
-    /**
-     * Workout duration in minutes
-     */
-    private Integer duration;
-
-    /**
-     * Number representing estimation of how many calories workout helps to burn
-     */
-    @Column(name = "estimated_calories")
-    private Integer estimatedCalories;
-
-    /**
-     * List of exercises in workout
-     */
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @Builder.Default
@@ -52,11 +33,5 @@ public class Workout implements Comparable<Workout> {
 
     public void addExercise(Exercise exercise) {
         exercises.add(exercise);
-    }
-
-
-    @Override
-    public int compareTo(Workout o) {
-        return getName().compareTo(o.getName());
     }
 }

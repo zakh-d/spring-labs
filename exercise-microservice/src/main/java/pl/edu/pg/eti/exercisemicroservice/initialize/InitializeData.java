@@ -5,42 +5,38 @@ import org.springframework.stereotype.Component;
 import pl.edu.pg.eti.exercisemicroservice.exercises.entity.Exercise;
 import pl.edu.pg.eti.exercisemicroservice.exercises.service.api.ExerciseService;
 import pl.edu.pg.eti.exercisemicroservice.workouts.entity.Workout;
+import pl.edu.pg.eti.exercisemicroservice.workouts.service.api.WorkoutService;
 
 import java.util.UUID;
 
 @Component
 public class InitializeData implements InitializingBean {
     private ExerciseService exerciseService;
+    private WorkoutService workoutService;
 
-    public InitializeData(ExerciseService exerciseService) {
+    public InitializeData(ExerciseService exerciseService, WorkoutService workoutService) {
         this.exerciseService = exerciseService;
+        this.workoutService = workoutService;
     }
-
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("Initialization Started");
         Workout pushDay = Workout.builder()
                 .id(UUID.fromString("cf0de289-27a2-4349-a681-370f1348c55f"))
-                .name("Push Day")
-                .duration(120)
-                .estimatedCalories(900)
                 .build();
 
         Workout pullDay = Workout.builder()
                 .id(UUID.fromString("bdf86514-c1d1-47a3-b69c-9684684ac2ec"))
-                .name("Pull Day")
-                .duration(90)
-                .estimatedCalories(700)
                 .build();
 
         Workout legDay = Workout.builder()
                 .id(UUID.fromString("de1eaf7b-1b68-4c0a-a15e-682da5aa4c66"))
-                .name("Leg Day")
-                .duration(100)
-                .estimatedCalories(1200)
                 .build();
 
-       Exercise benchPress = Exercise.builder()
+        this.workoutService.save(pushDay);
+        this.workoutService.save(pullDay);
+        this.workoutService.save(legDay);
+
+        Exercise benchPress = Exercise.builder()
                 .id(UUID.fromString("38037918-36dc-4a39-ac1b-6dcec29d62be"))
                 .name("Bench Press")
                 .sets(5)
