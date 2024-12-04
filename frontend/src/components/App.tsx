@@ -1,9 +1,10 @@
 import {ReactElement} from "react";
+import AppHeader from "./AppHeader.tsx";
 
 const App = (): ReactElement => {
   return (
     <>
-      <h1>Simple Workout App</h1>
+        <AppHeader/>
     </>
   )
 }
