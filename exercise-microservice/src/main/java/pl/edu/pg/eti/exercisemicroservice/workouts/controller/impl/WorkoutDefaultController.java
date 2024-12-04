@@ -21,7 +21,9 @@ public class WorkoutDefaultController implements WorkoutController {
 
     @Override
     public void putWorkout(UUID id) {
-        workoutService.save(Workout.builder().id(id).build());
+        workoutService.find(id).ifPresentOrElse(workout -> {}, () -> {
+            workoutService.save(Workout.builder().id(id).build());
+        });
     }
 
 }
