@@ -14,7 +14,6 @@ const AppHeader = (): ReactElement => {
                 </Menu.Item>
                 <Menu.Item as={'a'}>Home</Menu.Item>
                 <Menu.Item as={'a'}>Workouts</Menu.Item>
-                <Menu.Item as={'a'}>Exercises</Menu.Item>
             </Container>
         </Menu>
     )
