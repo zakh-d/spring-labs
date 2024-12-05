@@ -6,7 +6,7 @@ import menu_icon from "../assets/menu_icon.png";
 const AppHeader = (): ReactElement => {
 
     return (
-        <Menu fixed="top" inverted={true}>
+        <Menu inverted={true}>
             <Container>
                 <Menu.Item>
                     <Image size="mini" src={menu_icon} style={{marginRight: '1.5em'}}/>

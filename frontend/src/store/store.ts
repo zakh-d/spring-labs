@@ -1,7 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
+import {workoutSlice} from "./workoutSlice.ts";
 
 export const store = configureStore({
-    reducer: {}
+    reducer: {
+        workout: workoutSlice.reducer
+    }
 });
 
 export type RootState = ReturnType<typeof store.getState>;
