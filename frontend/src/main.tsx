@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client'
 import App from './components/App.tsx'
 import 'semantic-ui-css/semantic.min.css'
-import { ApiProvider } from '@reduxjs/toolkit/query/react';
-import { workoutApi } from './api/workout-api.ts';
+import { Provider } from 'react-redux';
+import { store } from './store/store.ts';
 
 createRoot(document.getElementById('root')!).render(
-  <ApiProvider api={workoutApi}>
+  <Provider store={store}>
       <App />
-  </ApiProvider>
+  </Provider>
 )

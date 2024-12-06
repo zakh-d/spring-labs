@@ -3,6 +3,7 @@ import Workout from "../../entities/workout.ts";
 import WorkoutItem from "./WorkoutItem.tsx";
 import {Container, Header, List} from "semantic-ui-react";
 import {useGetWorkoutsQuery} from "../../api/workout-api.ts";
+import WorkoutPlaceholder from "./WorkoutPlaceholder.tsx";
 
 const WorkoutList = (): ReactElement => {
     const {data, isError, isLoading} = useGetWorkoutsQuery();
@@ -10,7 +11,11 @@ const WorkoutList = (): ReactElement => {
         return (
         <Container>
             <Header>Available Workouts</Header>
-            Loading...
+            <List>
+                <WorkoutPlaceholder/>
+                <WorkoutPlaceholder/>
+                <WorkoutPlaceholder/>
+            </List>
         </Container>);
     }
     if (isError || !data) {
