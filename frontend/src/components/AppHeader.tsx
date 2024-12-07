@@ -2,6 +2,7 @@ import {ReactElement} from "react";
 import {Container, Image, Menu} from "semantic-ui-react";
 
 import menu_icon from "../assets/menu_icon.png";
+import { NavLink } from "react-router";
 
 const AppHeader = (): ReactElement => {
 
@@ -12,8 +13,8 @@ const AppHeader = (): ReactElement => {
                     <Image size="mini" src={menu_icon} style={{marginRight: '1.5em'}}/>
                     Simple Workout
                 </Menu.Item>
-                <Menu.Item as={'a'}>Home</Menu.Item>
-                <Menu.Item as={'a'}>Workouts</Menu.Item>
+                <Menu.Item as={NavLink} to={'/'}>Home</Menu.Item>
+                <Menu.Item as={NavLink} to={'/workouts'}>Workouts</Menu.Item>
             </Container>
         </Menu>
     )

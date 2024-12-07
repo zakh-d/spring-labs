@@ -1,12 +1,14 @@
 import {ReactElement} from "react";
 import AppHeader from "./AppHeader.tsx";
-import WorkoutList from "./Workout/WorkoutList.tsx";
+import { Outlet } from "react-router";
+import AppFooter from "./AppFooter.tsx";
 
 const App = (): ReactElement => {
     return (
         <>
             <AppHeader/>
-            <WorkoutList/>
+            <Outlet/>
+            <AppFooter/>
         </>
     )
 }
