@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import { Button, Container, Icon } from "semantic-ui-react";
 import WorkoutDetail from "../../components/Workout/WorkoutDetail";
 import { getWorkoutListRoute } from "../../utils/routes";
+import WorkoutPlaceholder from "../../components/Workout/WorkoutPlaceholder";
 
 const WorkoutDetailPage = (): ReactElement => {
     const { id } = useParams<{ id: string }>();
@@ -13,7 +14,7 @@ const WorkoutDetailPage = (): ReactElement => {
     const {data, isLoading, isError} = useGetWorkoutQuery(id);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Container><WorkoutPlaceholder/></Container>;
     }
 
     if (isError || !data) {

@@ -4,6 +4,7 @@ type Exercise = {
     sets: number,
     reps: number;
     additionalWeight: number;
+    workoutId: string;
 }
 
 export default Exercise;
