@@ -28,8 +28,12 @@ export const workoutApi = createApi({
         getWorkouts: builder.query<WorkoutList, void>({
             query: () => '/workouts',
             transformResponse: (response: WorkoutListDto) => mapKeysToCamelCase<WorkoutListDto, WorkoutList>(response)
+        }),
+        getWorkout: builder.query<Workout, string>({
+            query: (id) => `/workouts/${id}`,
+            transformResponse: (response: WorkoutApi) => mapKeysToCamelCase<WorkoutApi, Workout>(response)
         })
     })
 });
 
-export const {useGetWorkoutsQuery } = workoutApi;
+export const {useGetWorkoutsQuery, useGetWorkoutQuery } = workoutApi;
