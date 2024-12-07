@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
 import Workout from "../../entities/workout";
-import { Header, List, Popup } from "semantic-ui-react";
-import { useGetWorkoutExercisesQuery } from "../../api/workout-api";
+import { Dropdown, DropdownHeader, DropdownItem, DropdownMenu, Header, List, Popup } from "semantic-ui-react";
+import { useDeleteWorkoutMutation, useGetWorkoutExercisesQuery } from "../../api/workout-api";
 import ExerciseList from "../Exercises/ExerciseList";
+import ConfirmDeleteModal from "../ConfirmDeleteModal";
 import WorkoutPlaceholder from "./WorkoutPlaceholder";
 
 type PropsType = {
@@ -11,6 +12,7 @@ type PropsType = {
 
 const WorkoutDetail = ({workout}: PropsType): ReactElement => {
     const { data, isLoading, isError } = useGetWorkoutExercisesQuery(workout.id);
+    const [deleteWorkout, result] = useDeleteWorkoutMutation();
 
     if ((isError || !data) && !isLoading) {
         return <div>Error...</div>;
@@ -28,6 +30,22 @@ const WorkoutDetail = ({workout}: PropsType): ReactElement => {
                     />
                 </List.Item>
             </List>
+
+            <Dropdown
+                icon='options'
+                floating
+                button
+                className='icon'>
+                <DropdownMenu>
+                    <DropdownHeader icon='pencil alternate' content='Workout Actions'/>
+                    <DropdownItem>Edit</DropdownItem>
+                    <ConfirmDeleteModal 
+                        title={`Delete ${workout.name} Workout`}
+                        content={`Are you sure you want to delete ${workout.name} workout? This action cannot be undone.`}
+                        trigger={<DropdownItem>Delete</DropdownItem>}
+                        action={() => deleteWorkout(workout.id)} />
+                </DropdownMenu>
+            </Dropdown>
 
             <Header as="h3">Exercises</Header>
             {isLoading ? <WorkoutPlaceholder /> : <ExerciseList exercises={data.exercises} />}

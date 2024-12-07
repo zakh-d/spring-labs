@@ -54,6 +54,12 @@ export const workoutApi = createApi({
             query: (id) => `/workouts/${id}`,
             transformResponse: (response: WorkoutApi) => mapKeysToCamelCase<WorkoutApi, Workout>(response)
         }),
+        deleteWorkout: builder.mutation<void, string>({
+            query: (id) => ({
+                url: `/workouts/${id}`,
+                method: 'DELETE'
+            })
+        }),
         getWorkoutExercises: builder.query<ExerciseList, string>({
             query: (id) => `/workouts/${id}/exercises`,
             transformResponse: (response: ExerciseApiList) => mapKeysToCamelCase<ExerciseApiList, ExerciseList>(response)
@@ -61,4 +67,4 @@ export const workoutApi = createApi({
     })
 });
 
-export const {useGetWorkoutsQuery, useGetWorkoutQuery, useGetWorkoutExercisesQuery} = workoutApi;
+export const {useGetWorkoutsQuery, useGetWorkoutQuery, useGetWorkoutExercisesQuery, useDeleteWorkoutMutation} = workoutApi;
