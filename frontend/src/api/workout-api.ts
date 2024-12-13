@@ -45,26 +45,38 @@ export const workoutApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: "http://localhost:7003/api"
     }),
+    tagTypes: ['Workout', 'Exercise'],
     endpoints: builder => ({
         getWorkouts: builder.query<WorkoutList, void>({
             query: () => '/workouts',
-            transformResponse: (response: WorkoutApiList) => mapKeysToCamelCase<WorkoutApiList, WorkoutList>(response)
+            transformResponse: (response: WorkoutApiList) => mapKeysToCamelCase<WorkoutApiList, WorkoutList>(response),
+            providesTags: [{type: 'Workout', id: 'LIST'}],
         }),
         getWorkout: builder.query<Workout, string>({
             query: (id) => `/workouts/${id}`,
-            transformResponse: (response: WorkoutApi) => mapKeysToCamelCase<WorkoutApi, Workout>(response)
+            transformResponse: (response: WorkoutApi) => mapKeysToCamelCase<WorkoutApi, Workout>(response),
+            providesTags: (_result, _error, id, _meta) => [{type: 'Workout', id}],
         }),
         deleteWorkout: builder.mutation<void, string>({
             query: (id) => ({
                 url: `/workouts/${id}`,
-                method: 'DELETE'
-            })
+                method: 'DELETE',
+            }),
+            invalidatesTags: (_result, _error, id, _meta) => [{type: 'Workout', id: 'LIST'}, {type: 'Workout', id}]
         }),
         getWorkoutExercises: builder.query<ExerciseList, string>({
             query: (id) => `/workouts/${id}/exercises`,
-            transformResponse: (response: ExerciseApiList) => mapKeysToCamelCase<ExerciseApiList, ExerciseList>(response)
-        })
+            transformResponse: (response: ExerciseApiList) => mapKeysToCamelCase<ExerciseApiList, ExerciseList>(response),
+            providesTags: (_result, _error, workoutId, _meta) => [{type: 'Exercise', id: `LIST-${workoutId}`}],
+        }),
+        deleteExercise: builder.mutation<void, {workoutId: string, exerciseId: string}>({
+            query: ({workoutId, exerciseId}) => ({
+                url: `/workouts/${workoutId}/exercises/${exerciseId}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: (_result, _error, {workoutId}, _meta) =>  [{type: 'Exercise', id: `LIST-${workoutId}`}],
+        }),
     })
 });
 
-export const {useGetWorkoutsQuery, useGetWorkoutQuery, useGetWorkoutExercisesQuery, useDeleteWorkoutMutation} = workoutApi;
+export const {useGetWorkoutsQuery, useGetWorkoutQuery, useGetWorkoutExercisesQuery, useDeleteWorkoutMutation, useDeleteExerciseMutation} = workoutApi;

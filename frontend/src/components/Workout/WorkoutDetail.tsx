@@ -5,6 +5,8 @@ import { useDeleteWorkoutMutation, useGetWorkoutExercisesQuery } from "../../api
 import ExerciseList from "../Exercises/ExerciseList";
 import ConfirmDeleteModal from "../ConfirmDeleteModal";
 import WorkoutPlaceholder from "./WorkoutPlaceholder";
+import { getWorkoutListRoute } from "../../utils/routes";
+import { useNavigate } from "react-router";
 
 type PropsType = {
     workout: Workout
@@ -13,6 +15,12 @@ type PropsType = {
 const WorkoutDetail = ({workout}: PropsType): ReactElement => {
     const { data, isLoading, isError } = useGetWorkoutExercisesQuery(workout.id);
     const [deleteWorkout, result] = useDeleteWorkoutMutation();
+    const navigate = useNavigate()
+
+    if (result.isSuccess) {
+        navigate(getWorkoutListRoute());
+        return <></>;
+    }
 
     if ((isError || !data) && !isLoading) {
         return <div>Error...</div>;
