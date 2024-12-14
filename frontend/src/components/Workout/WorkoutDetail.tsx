@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import Workout from "../../entities/workout";
-import { Dropdown, DropdownHeader, DropdownItem, DropdownMenu, Header, List, Popup } from "semantic-ui-react";
+import { Button, Dropdown, DropdownHeader, DropdownItem, DropdownMenu, Header, Icon, List, Popup } from "semantic-ui-react";
 import { useDeleteWorkoutMutation, useGetWorkoutExercisesQuery } from "../../api/workout-api";
 import ExerciseList from "../Exercises/ExerciseList";
-import ConfirmDeleteModal from "../ConfirmDeleteModal";
+import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
 import WorkoutPlaceholder from "./WorkoutPlaceholder";
 import { getWorkoutListRoute } from "../../utils/routes";
 import { useNavigate } from "react-router";
@@ -57,6 +57,14 @@ const WorkoutDetail = ({workout}: PropsType): ReactElement => {
 
             <Header as="h3">Exercises</Header>
             {isLoading ? <WorkoutPlaceholder /> : <ExerciseList exercises={data.exercises} />}
+            <Button fluid animated="vertical">
+                <Button.Content visible>
+                    <Icon name="plus"/>
+                </Button.Content>
+                <Button.Content hidden>
+                    Add new exercise to {workout.name}
+                </Button.Content>
+            </Button>
 
         </>
     )

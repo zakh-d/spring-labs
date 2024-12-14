@@ -1,6 +1,6 @@
 import { Divider, Dropdown, DropdownHeader, DropdownItem, DropdownMenu, ListContent, ListDescription, ListHeader, ListItem } from "semantic-ui-react";
 import Exercise from "../../entities/exercise";
-import ConfirmDeleteModal from "../ConfirmDeleteModal";
+import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
 import { useDeleteExerciseMutation } from "../../api/workout-api";
 
 type PropsType = {
