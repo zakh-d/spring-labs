@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import Workout from "../entities/workout.ts";
-import { mapKeysToCamelCase } from "../utils/to_camel_case.ts";
+import { mapKeysToCamelCase, mapKeysToSnakeCase } from "../utils/to_camel_case.ts";
 import Exercise from "../entities/exercise.ts";
 
 type WorkoutApi = {
@@ -68,7 +68,7 @@ export const workoutApi = createApi({
             query: (workout) => ({
                 url: `/workouts/${workout.id}`,
                 method: 'PUT',
-                body: workout
+                body: mapKeysToSnakeCase<Workout, WorkoutApi>(workout)
             }),
             invalidatesTags: [{type: 'Workout', id: 'LIST'}]
         }),
