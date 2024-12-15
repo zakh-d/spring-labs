@@ -2,6 +2,9 @@ import { Divider, Dropdown, DropdownHeader, DropdownItem, DropdownMenu, ListCont
 import Exercise from "../../entities/exercise";
 import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
 import { useDeleteExerciseMutation } from "../../api/workout-api";
+import BasicModal from "../common/BasicModal";
+import ExerciseUpdateForm from "./ExerciseUpdateForm";
+import { useState } from "react";
 
 type PropsType = {
     exercise: Exercise
@@ -9,6 +12,7 @@ type PropsType = {
 
 const ExerciseItem = ({ exercise }: PropsType) => {
     const [deleteExercise, result] = useDeleteExerciseMutation();
+    const [editModalOpen, setEditModalOpen] = useState(false);
     if (result.isSuccess) {
         return <></>
     }
@@ -25,7 +29,13 @@ const ExerciseItem = ({ exercise }: PropsType) => {
                         className='icon'>
                         <DropdownMenu>
                             <DropdownHeader icon='pencil alternate' content='Exercise Actions'/>
-                            <DropdownItem>Edit</DropdownItem>
+                            <BasicModal
+                                title={`Edit ${exercise.name} exercise`}
+                                trigger={<DropdownItem>Edit</DropdownItem>} 
+                                isOpen={editModalOpen} 
+                                setOpen={setEditModalOpen}>
+                                <ExerciseUpdateForm exercise={exercise} onSuccess={() => {setEditModalOpen(false)}} />
+                            </BasicModal>
                             <ConfirmDeleteModal 
                                 title={`Delete ${exercise.name} exercise`}
                                 content={`Are you sure you want to delete ${exercise.name} exercise? This action cannot be undone.`}
