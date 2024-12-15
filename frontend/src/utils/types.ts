@@ -3,3 +3,11 @@ export interface WorkoutFormValues {
     duration: number;
     estimatedCalories: number;
 }
+
+export interface ExerciseFormValues {
+    name: string;
+    sets: number;
+    reps: number;
+    hasAdditionalWeight: boolean;
+    additionalWeight: number;
+}

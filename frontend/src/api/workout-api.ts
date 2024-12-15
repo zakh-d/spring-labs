@@ -84,6 +84,14 @@ export const workoutApi = createApi({
             }),
             invalidatesTags: (_result, _error, {workoutId}, _meta) =>  [{type: 'Exercise', id: `LIST-${workoutId}`}],
         }),
+        putExercise: builder.mutation<void, {workoutId: string, exercise: Exercise}>({
+            query: ({workoutId, exercise}) => ({
+                url: `/workouts/${workoutId}/exercises/${exercise.id}`,
+                method: 'PUT',
+                body: mapKeysToSnakeCase<Exercise, ExerciseApi>(exercise)
+            }),
+            invalidatesTags: (_result, _error, {workoutId}, _meta) =>  [{type: 'Exercise', id: `LIST-${workoutId}`}],
+        }),
     })
 });
 
@@ -93,5 +101,6 @@ export const {
     usePutWorkoutMutation,
     useGetWorkoutExercisesQuery,
     useDeleteWorkoutMutation,
-    useDeleteExerciseMutation
+    useDeleteExerciseMutation,
+    usePutExerciseMutation
 } = workoutApi;

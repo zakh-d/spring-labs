@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import Workout from "../../entities/workout";
 import { Button, Dropdown, DropdownHeader, DropdownItem, DropdownMenu, Header, Icon, List, Popup } from "semantic-ui-react";
 import { useDeleteWorkoutMutation, useGetWorkoutExercisesQuery } from "../../api/workout-api";
@@ -7,6 +7,8 @@ import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
 import WorkoutPlaceholder from "./WorkoutPlaceholder";
 import { getWorkoutListRoute } from "../../utils/routes";
 import { useNavigate } from "react-router";
+import BasicModal from "../common/BasicModal";
+import ExerciseCreateForm from "../Exercises/ExerciseCreateForm";
 
 type PropsType = {
     workout: Workout
@@ -15,6 +17,7 @@ type PropsType = {
 const WorkoutDetail = ({workout}: PropsType): ReactElement => {
     const { data, isLoading, isError } = useGetWorkoutExercisesQuery(workout.id);
     const [deleteWorkout, result] = useDeleteWorkoutMutation();
+    const [createExerciseModalOpen, setCreateExerciseModalOpen] = useState(false);
     const navigate = useNavigate()
 
     if (result.isSuccess) {
@@ -57,14 +60,19 @@ const WorkoutDetail = ({workout}: PropsType): ReactElement => {
 
             <Header as="h3">Exercises</Header>
             {isLoading ? <WorkoutPlaceholder /> : <ExerciseList exercises={data.exercises} />}
-            <Button fluid animated="vertical">
-                <Button.Content visible>
-                    <Icon name="plus"/>
-                </Button.Content>
-                <Button.Content hidden>
-                    Add new exercise to {workout.name}
-                </Button.Content>
-            </Button>
+            <BasicModal 
+                title={`Add exercise to ${workout.name}`}
+                trigger={<Button fluid animated="vertical">
+                    <Button.Content visible>
+                        <Icon name="plus" />
+                    </Button.Content>
+                    <Button.Content hidden>
+                        Add new exercise to {workout.name}
+                    </Button.Content>
+                </Button>} isOpen={createExerciseModalOpen} setOpen={setCreateExerciseModalOpen}>
+                    <ExerciseCreateForm workout={workout} onSuccess={() => {setCreateExerciseModalOpen(false)}}/>
+                    
+            </BasicModal>
 
         </>
     )
