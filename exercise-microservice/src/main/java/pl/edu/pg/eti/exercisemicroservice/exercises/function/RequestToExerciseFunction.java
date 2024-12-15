@@ -16,7 +16,7 @@ public class RequestToExerciseFunction implements TriFunction<Workout, UUID, Put
                 .id(exerciseId)
                 .name(request.getName())
                 .reps(request.getReps())
-                .sets(request.getReps())
+                .sets(request.getSets())
                 .additionalWeight(request.getAdditionalWeight())
                 .workout(workout)
                 .build();
