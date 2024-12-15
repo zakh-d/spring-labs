@@ -9,6 +9,7 @@ import { getWorkoutListRoute } from "../../utils/routes";
 import { useNavigate } from "react-router";
 import BasicModal from "../common/BasicModal";
 import ExerciseCreateForm from "../Exercises/ExerciseCreateForm";
+import { WorkoutUpdateForm } from "./WorkoutUpdateForm";
 
 type PropsType = {
     workout: Workout
@@ -18,6 +19,7 @@ const WorkoutDetail = ({workout}: PropsType): ReactElement => {
     const { data, isLoading, isError } = useGetWorkoutExercisesQuery(workout.id);
     const [deleteWorkout, result] = useDeleteWorkoutMutation();
     const [createExerciseModalOpen, setCreateExerciseModalOpen] = useState(false);
+    const [editWorkoutModalOpen, setEditWorkoutModalOpen] = useState(false);
     const navigate = useNavigate()
 
     if (result.isSuccess) {
@@ -49,7 +51,13 @@ const WorkoutDetail = ({workout}: PropsType): ReactElement => {
                 className='icon'>
                 <DropdownMenu>
                     <DropdownHeader icon='pencil alternate' content='Workout Actions'/>
-                    <DropdownItem>Edit</DropdownItem>
+                    <BasicModal
+                        trigger={<DropdownItem>Edit</DropdownItem>}
+                        title={`Edit ${workout.name} Workout`}
+                        isOpen={editWorkoutModalOpen} setOpen={setEditWorkoutModalOpen}
+                    >
+                        <WorkoutUpdateForm workout={workout} onSuccess={() => {setEditWorkoutModalOpen(false)}} />
+                    </BasicModal>
                     <ConfirmDeleteModal 
                         title={`Delete ${workout.name} Workout`}
                         content={`Are you sure you want to delete ${workout.name} workout? This action cannot be undone.`}

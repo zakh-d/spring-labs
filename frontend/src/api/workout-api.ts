@@ -70,7 +70,7 @@ export const workoutApi = createApi({
                 method: 'PUT',
                 body: mapKeysToSnakeCase<Workout, WorkoutApi>(workout)
             }),
-            invalidatesTags: [{type: 'Workout', id: 'LIST'}]
+            invalidatesTags: (_result, _error, {id}, _meta) => [{type: 'Workout', id}, {type: 'Workout', id: 'LIST'}],
         }),
         getWorkoutExercises: builder.query<ExerciseList, string>({
             query: (id) => `/workouts/${id}/exercises`,
