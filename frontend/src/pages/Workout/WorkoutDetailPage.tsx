@@ -19,11 +19,13 @@ const WorkoutDetailPage = (): ReactElement => {
     }
 
     if (isError || !data) {
-        if (error?.status === 404) {
-            return <Page404 />;
-        }
-        if (error?.status === 400) {
-            return <Page404/>
+        if (error && 'status' in error) {
+            if (error?.status === 404) {
+                return <Page404 />;
+            }
+            if (error?.status === 400) {
+                return <Page404/>
+            }
         }
         return <Container>Failed to load workout</Container>;
     }
