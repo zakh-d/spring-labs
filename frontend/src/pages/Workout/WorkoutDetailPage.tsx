@@ -12,9 +12,9 @@ const WorkoutDetailPage = (): ReactElement => {
     if (!id) {
         return <div>Invalid workout id</div>;
     }
-    const {data, isFetching, error, isError} = useGetWorkoutQuery(id);
+    const {data, isLoading, error, isError} = useGetWorkoutQuery(id);
 
-    if (isFetching) {
+    if (isLoading) {
         return <Container><WorkoutPlaceholder/></Container>;
     }
 
