@@ -1,0 +1,24 @@
+services:
+    gateway:
+        build: gateway
+        platform: linux/amd64
+        environment:
+            - server.port=80
+            - workouts.gateway.host=localhost:8000
+            - workouts.workouts-microservice.url=http://workouts
+            - workouts.exercises-microservice.url=http://exercises
+        ports:
+            - 8000:80
+    workouts:
+        build: workout-microservice
+        platform: linux/amd64
+        depends_on:
+            - exercises
+        environment:
+            - server.port=80
+            - workouts.exercises-microservice.url=http://exercises
+    exercises:
+        build: exercise-microservice
+        platform: linux/amd64
+        environment:
+            - server.port=80

@@ -27,6 +27,9 @@ public class GatewayApplication {
             @Value("${workouts.workouts-microservice.url}") String workoutsUrl,
             @Value("${workouts.exercises-microservice.url}") String exercisesUrl
     ) {
+        System.out.println("host: " + host);
+        System.out.println("workoutsUrl: " + workoutsUrl);
+        System.out.println("exercisesUrl: " + exercisesUrl);
        return builder.routes()
                .route("workouts", route -> route.host(host)
                        .and()

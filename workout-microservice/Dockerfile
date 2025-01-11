@@ -11,6 +11,6 @@ RUN ./mvnw package
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=build /app/target/gateway-0.0.1-SNAPSHOT.jar /app
+COPY --from=build /app/target/workout-microservice-0.0.1-SNAPSHOT.jar /app
 
-CMD ["java", "-jar", "gateway-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "workout-microservice-0.0.1-SNAPSHOT.jar"]
