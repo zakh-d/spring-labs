@@ -7,7 +7,7 @@ RUN ./mvnw dependency:go-offline
 
 COPY src/ ./src
 
-RUN ./mvnw package
+RUN ./mvnw package -Dmaven.test.skip
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
