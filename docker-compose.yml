@@ -4,11 +4,9 @@ services:
         platform: linux/amd64
         environment:
             - server.port=80
-            - workouts.gateway.host=localhost:8000
+            - workouts.gateway.host=gateway
             - workouts.workouts-microservice.url=http://workouts
             - workouts.exercises-microservice.url=http://exercises
-        ports:
-            - 8000:80
     workouts:
         build: workout-microservice
         platform: linux/amd64
@@ -26,6 +24,9 @@ services:
         build: 
             context: frontend
             args:
-                - VITE_API_HOST=localhost:8000
+                - VITE_API_HOST=localhost:8080
         ports:
             - 8080:80
+        environment:
+            - API_URL=http://gateway
+            - API_HOST=gateway
