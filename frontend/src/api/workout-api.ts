@@ -40,10 +40,12 @@ type ExerciseList = {
 }
 
 
+const API_HOST = import.meta.env.VITE_API_HOST || 'localhost:7000';
+
 export const workoutApi = createApi({
     reducerPath: 'workoutApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:7003/api"
+        baseUrl: `http://${API_HOST}/api`
     }),
     tagTypes: ['Workout', 'Exercise'],
     endpoints: builder => ({
