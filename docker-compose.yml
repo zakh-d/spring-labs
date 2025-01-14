@@ -1,0 +1,75 @@
+services:
+    gateway:
+        build: gateway
+        platform: linux/amd64
+        environment:
+            - server.port=80
+            - workouts.gateway.host=gateway
+            - workouts.workouts-microservice.url=http://workouts
+            - workouts.exercises-microservice.url=http://exercises
+    workouts:
+        build: workout-microservice
+        platform: linux/amd64
+        depends_on:
+            exercises:
+                condition: service_started
+            workouts-db:
+                condition: service_healthy
+        environment:
+            - server.port=80
+            - workouts.exercises-microservice.url=http://exercises
+            - spring.datasource.url=jdbc:postgresql://workouts-db:5432/${WORKOUT_DB_NAME}
+            - spring.datasource.username=${WORKOUT_DB_USER}
+            - spring.datasource.password=${WORKOUT_DB_PASSWORD}
+    workouts-db:
+        image: postgres:17.2-alpine3.21
+        restart: always
+        environment:
+            - POSTGRES_PASSWORD=${WORKOUT_DB_PASSWORD}
+            - POSTGRES_USER=${WORKOUT_DB_USER}
+            - POSTGRES_DB=${WORKOUT_DB_NAME}
+        healthcheck:
+            test: [ "CMD-SHELL", "pg_isready" ]
+            interval: 1s
+            timeout: 5s
+            retries: 10
+        volumes:
+            - workouts-db:/var/lib/postgresql/data
+    exercises:
+        build: exercise-microservice
+        platform: linux/amd64
+        environment:
+            - server.port=80
+            - spring.datasource.url=jdbc:postgresql://exercises-db:5432/${EXERCISE_DB_NAME}
+            - spring.datasource.username=${EXERCISE_DB_USER}
+            - spring.datasource.password=${EXERCISE_DB_PASSWORD}
+        depends_on:
+            exercises-db:
+                condition: service_healthy
+    exercises-db:
+        image: postgres:17.2-alpine3.21
+        restart: always
+        environment:
+            - POSTGRES_PASSWORD=${EXERCISE_DB_PASSWORD}
+            - POSTGRES_USER=${EXERCISE_DB_USER}
+            - POSTGRES_DB=${EXERCISE_DB_NAME}
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready"]
+            interval: 1s
+            timeout: 5s
+            retries: 10
+        volumes:
+            - exercises-db:/var/lib/postgresql/data
+    frontend:
+        build:
+            context: frontend
+            args:
+                - VITE_API_HOST=localhost:8080
+        ports:
+            - 8080:80
+        environment:
+            - API_URL=http://gateway
+            - API_HOST=gateway
+volumes:
+    workouts-db:
+    exercises-db:
