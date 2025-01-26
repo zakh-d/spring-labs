@@ -1,4 +1,8 @@
 services:
+    consul:
+      image: consul:1.15.4
+      ports:
+        - 8500:8500
     gateway:
         build: gateway
         platform: linux/amd64
@@ -21,6 +25,8 @@ services:
             - spring.datasource.url=jdbc:postgresql://workouts-db:5432/${WORKOUT_DB_NAME}
             - spring.datasource.username=${WORKOUT_DB_USER}
             - spring.datasource.password=${WORKOUT_DB_PASSWORD}
+            - spring.cloud.consul.discovery.instance-id=workout-1
+            - spring.cloud.consul.host=consul
     workouts-db:
         image: postgres:17.2-alpine3.21
         restart: always
