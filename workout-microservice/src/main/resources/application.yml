@@ -1,0 +1,31 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: workout-microservice
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/workouts
+    username: admin
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update # TODO: change after db migrations will be added
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instance-id: 1
+        service-name: workouts
+        health-check-path: /api/workouts
+workouts:
+  exercises-microservice:
+    url: http://localhost:7002
