@@ -49,6 +49,10 @@ services:
             - spring.datasource.url=jdbc:postgresql://exercises-db:5432/${EXERCISE_DB_NAME}
             - spring.datasource.username=${EXERCISE_DB_USER}
             - spring.datasource.password=${EXERCISE_DB_PASSWORD}
+            - spring.cloud.consul.port=8500
+            - spring.cloud.consul.host=consul
+            - spring.cloud.consul.discovery.service-name=exercises
+            - spring.cloud.consul.discovery.instance-id=exercise-1
         depends_on:
             exercises-db:
                 condition: service_healthy
