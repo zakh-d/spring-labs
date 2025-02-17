@@ -14,9 +14,14 @@ services:
     workouts:
         build: workout-microservice
         platform: linux/amd64
+        healthcheck:
+            test: "curl --fail --silent localhost/actuator/health | grep UP || exit 1"
+            interval: 20s
+            timeout: 5s
+            retries: 5
         depends_on:
             exercises:
-                condition: service_started
+                condition: service_healthy
             workouts-db:
                 condition: service_healthy
         environment:
@@ -56,6 +61,11 @@ services:
         depends_on:
             exercises-db:
                 condition: service_healthy
+        healthcheck:
+            test: "curl --fail --silent localhost:80/actuator/health | grep UP || exit 1"
+            interval: 20s
+            timeout: 5s
+            retries: 5
     exercises-db:
         image: postgres:17.2-alpine3.21
         restart: always
@@ -75,6 +85,11 @@ services:
             context: frontend
             args:
                 - VITE_API_HOST=localhost:8080
+        depends_on:
+            workouts:
+                condition: service_healthy
+            exercises:
+                condition: service_healthy
         ports:
             - 8080:80
         environment:

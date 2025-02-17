@@ -10,6 +10,8 @@ COPY src/ ./src
 RUN ./mvnw package -Dmaven.test.skip
 
 FROM eclipse-temurin:17-jre-alpine
+
+RUN apk add --update curl && rm -rf /var/cache/apk/*
 WORKDIR /app
 COPY --from=build /app/target/exercise-microservice-0.0.1-SNAPSHOT.jar /app
 

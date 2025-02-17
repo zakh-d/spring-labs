@@ -1,11 +1,12 @@
 package pl.edu.pg.eti.workoutmicroservice.workouts.event.repository.rest;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import pl.edu.pg.eti.workoutmicroservice.workouts.event.repository.api.WorkoutEventRepository;
 
+import java.net.URI;
 import java.util.UUID;
 
 @Repository
@@ -13,9 +14,9 @@ public class WorkoutEventRestRepository implements WorkoutEventRepository {
     private final RestTemplate restTemplate;
 
     public WorkoutEventRestRepository(
-            RestTemplateBuilder builder,
-            @Value("${workouts.exercises-microservice.url}") String exercisesUrl) {
-        this.restTemplate = builder.rootUri(exercisesUrl).build();
+            RestTemplateBuilder builder, DiscoveryClient discoveryClient) {
+        URI uri = discoveryClient.getInstances("exercises").stream().findAny().orElseThrow().getUri();
+        this.restTemplate = builder.rootUri(uri.toString()).build();
     }
 
     @Override

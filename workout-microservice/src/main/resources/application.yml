@@ -25,7 +25,6 @@ spring:
       discovery:
         instance-id: 1
         service-name: workouts
-        health-check-path: /api/workouts
 workouts:
   exercises-microservice:
     url: http://localhost:7002
