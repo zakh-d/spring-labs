@@ -11,6 +11,8 @@ services:
             - workouts.gateway.host=gateway
             - workouts.workouts-microservice.url=http://workouts
             - workouts.exercises-microservice.url=http://exercises
+            - spring.cloud.consul.host=consul
+            - spring.cloud.consul.discovery.instance-id=gateway-1
     workouts:
         build: workout-microservice
         platform: linux/amd64
