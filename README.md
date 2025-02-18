@@ -8,14 +8,19 @@ The backend part of the app is build with Java Spring framework.
 
 
 ## Service Architecture
+| Click on component to open it in the source code
 ```mermaid
 flowchart TD
-    workout_microservice["Workout Microservice
+    workout_microservice@{shape: procs, label: "Workout Microservice
         Java Spring
-    "]
+    "}
 
-    exercise_microservice["Exercise Microservice
+    exercise_microservice@{shape: procs, label: "Exercise Microservice
         Java Spring
+    "}
+
+    discovery_service["Discovery Service
+        Consul
     "]
 
     workout_db[(Workout DB
@@ -31,13 +36,26 @@ flowchart TD
         Spring Cloud
     ]
 
-    api_gateway --> workout_microservice
-    api_gateway --> exercise_microservice
+    workout_microservice --> discovery_service
+    api_gateway --> discovery_service
+    exercise_microservice --> discovery_service
+
+    api_gateway -.-> exercise_microservice
+    api_gateway -.-> workout_microservice
+
+    workout_microservice -.-> exercise_microservice
 
     nginx[React App + Reverse proxy
         nginx]
     
     nginx --> api_gateway
+
+
+    click nginx "https://github.com/zakh-d/spring-labs/blob/main/frontend"
+    click workout_microservice "https://github.com/zakh-d/spring-labs/blob/main/workout-microservice"
+    click exercise_microservice "https://github.com/zakh-d/spring-labs/blob/main/exercise-microservice"
+    click api_gateway "https://github.com/zakh-d/spring-labs/blob/main/gateway"
+    click discovery_service "https://github.com/zakh-d/spring-labs/blob/main/docker-compose.yml"
 
 ```
 
