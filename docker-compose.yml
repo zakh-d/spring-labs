@@ -13,6 +13,11 @@ services:
             - workouts.exercises-microservice.url=http://exercises
             - spring.cloud.consul.host=consul
             - spring.cloud.consul.discovery.instance-id=gateway-1
+        depends_on:
+            exercises:
+                condition: service_healthy
+            workouts:
+                condition: service_healthy
     workouts:
         build: workout-microservice
         platform: linux/amd64
